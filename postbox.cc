@@ -77,42 +77,33 @@ main(int argc, char* argv[])
 
   // Define Phonon axes
   if(verbose) cout << "Phonon axes :" << endl;
-  float a1[3] = {1,1,0};
-  TVector3 a(a1);
+  TVector3 a(1,1,0);
   a = a.Unit();
   if(verbose) a.Print();
-  float b1[3] = {1,0,0};
-  TVector3 b(b1);
+  TVector3 b(1,0,0);
   if(verbose) b.Print();
-  float c1[3] = {0,0,1};
-  TVector3 c(c1);
+  TVector3 c(0,0,1);
   if(verbose) c.Print();
   if(verbose) cout << endl << endl;
 
   // Define Face Axes/Points
   if(verbose) cout << "Face Axes :" << endl;
-  float n1[3] = {0,-1,0};
-  TVector3 n1v(n1);
+  TVector3 n1v(0,-1,0);
   TVector3 f1p = n1v*25;
   if(verbose) n1v.Print();
-  float n2[3] = {0,0,1};
-  TVector3 n2v(n2);
+  TVector3 n2v(0,0,1);
   TVector3 f2p = n2v*25;
   if(verbose) n2v.Print();
-  float n3[3] = {1,0,0};
-  TVector3 n3v(n3);
+  TVector3 n3v(1,0,0);
   TVector3 f3p = n3v*25;
   if(verbose) n3v.Print();
-  float n4[3] = {0,0,-1};
-  TVector3 n4v(n4);
+  TVector3 n4v(0,0,-1);
   TVector3 f4p = n4v*25;
   if(verbose) n4v.Print();
-  float n5[3] = {0,1,0};
-  TVector3 n5v(n5);
+  TVector3 n5v(0,1,0);
   TVector3 f5p = n5v*25;
   if(verbose) n5v.Print();
-  float n6[3] = {-1,0,0};
-  TVector3 n6v(n6);
+  TVector3 n6v(-1,0,0);
   TVector3 f6p = n6v*25;
   if(verbose) n6v.Print();
   if(verbose) cout << endl << endl;
