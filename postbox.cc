@@ -87,24 +87,26 @@ main(int argc, char* argv[])
   if(verbose) cout << endl << endl;
 
   // Define Face Axes/Points
+  int hWidth = 25;
+  if(verbose) cout << "Half-Width: " << hWidth << endl;
   if(verbose) cout << "Face Axes :" << endl;
   TVector3 n1v(0,-1,0);
-  TVector3 f1p = n1v*25;
+  TVector3 f1p = n1v*hWidth;
   if(verbose) n1v.Print();
   TVector3 n2v(0,0,1);
-  TVector3 f2p = n2v*25;
+  TVector3 f2p = n2v*hWidth;
   if(verbose) n2v.Print();
   TVector3 n3v(1,0,0);
-  TVector3 f3p = n3v*25;
+  TVector3 f3p = n3v*hWidth;
   if(verbose) n3v.Print();
   TVector3 n4v(0,0,-1);
-  TVector3 f4p = n4v*25;
+  TVector3 f4p = n4v*hWidth;
   if(verbose) n4v.Print();
   TVector3 n5v(0,1,0);
-  TVector3 f5p = n5v*25;
+  TVector3 f5p = n5v*hWidth;
   if(verbose) n5v.Print();
   TVector3 n6v(-1,0,0);
-  TVector3 f6p = n6v*25;
+  TVector3 f6p = n6v*hWidth;
   if(verbose) n6v.Print();
   if(verbose) cout << endl << endl;
 
@@ -119,9 +121,9 @@ main(int argc, char* argv[])
     Int_t mode = 0;
 
     //Generate Vertex
-    x = vertexGenerator->Uniform(-25.0,25.0);
-    y = vertexGenerator->Uniform(-25.0,25.0);
-    z = vertexGenerator->Uniform(-25.0,25.0);
+    x = vertexGenerator->Uniform(-1.0*hWidth,1.0*hWidth);
+    y = vertexGenerator->Uniform(-1.0*hWidth,1.0*hWidth);
+    z = vertexGenerator->Uniform(-1.0*hWidth,1.0*hWidth);
     intVertex.SetXYZ(x,y,z);
 
     hVer->Fill(x,y,z);
@@ -165,7 +167,7 @@ main(int argc, char* argv[])
         { 
           faceNormal = n1v;
           facePoint = f1p;
-          fD = TMath::Abs(faceNormal*intVertex + 25);
+          fD = TMath::Abs(faceNormal*intVertex + hWidth);
           if(verbose) cout << Energy << '\t' << x << '\t' << y << '\t' << z << endl;
           if(verbose) cout << "mode: " << mode << " -> Mode Vector: ";
           if(verbose) modeVector.Print();
@@ -175,7 +177,7 @@ main(int argc, char* argv[])
         {
           faceNormal = n2v;
           facePoint = f2p;
-          dD = TMath::Abs(faceNormal*intVertex + 25);
+          dD = TMath::Abs(faceNormal*intVertex + hWidth);
           if(dD < fD) fD = dD;
 
         }
@@ -183,28 +185,28 @@ main(int argc, char* argv[])
         {
           faceNormal = n3v;
           facePoint = f3p;
-          dD = TMath::Abs(faceNormal*intVertex + 25);
+          dD = TMath::Abs(faceNormal*intVertex + hWidth);
           if(dD < fD) fD = dD;
         }
         else if (f==4) 
         {
           faceNormal = n4v;
           facePoint = f4p;
-          dD = TMath::Abs(faceNormal*intVertex + 25);
+          dD = TMath::Abs(faceNormal*intVertex + hWidth);
           if(dD < fD) fD = dD;
         }
         else if (f==5) 
         {
           faceNormal = n5v;
           facePoint = f5p;
-          dD = TMath::Abs(faceNormal*intVertex + 25);
+          dD = TMath::Abs(faceNormal*intVertex + hWidth);
           if(dD < fD) fD = dD;
         }
         else if (f==6) 
         {
           faceNormal = n6v;
           facePoint = f6p;
-          dD = TMath::Abs(faceNormal*intVertex + 25);
+          dD = TMath::Abs(faceNormal*intVertex + hWidth);
           if(dD < fD) fD = dD;
         }
 
@@ -220,9 +222,9 @@ main(int argc, char* argv[])
         faceIntersect = intVertex + displacementVector;
         time = distance/speed;
 
-        if( TMath::Abs(TMath::Nint(faceIntersect.X())) > 25) continue;
-        if( TMath::Abs(TMath::Nint(faceIntersect.Y())) > 25) continue;
-        if( TMath::Abs(TMath::Nint(faceIntersect.Z())) > 25) continue;
+        if( TMath::Abs(TMath::Nint(faceIntersect.X())) > hWidth) continue;
+        if( TMath::Abs(TMath::Nint(faceIntersect.Y())) > hWidth) continue;
+        if( TMath::Abs(TMath::Nint(faceIntersect.Z())) > hWidth) continue;
 
         //print results
         if(verbose) cout << "face: " << f << "\tnumerator: " << '\t' << numerator << "\tdenominator: " << '\t' << denominator << "\tdistance: " << '\t' << distance << endl; 
