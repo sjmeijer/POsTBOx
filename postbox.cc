@@ -36,7 +36,7 @@ main(int argc, char* argv[])
   TRandom3 *vertexGenerator = new TRandom3();
   vertexGenerator->SetSeed(1234);
   TRandom3 *modeGenerator = new TRandom3();
-  vertexGenerator->SetSeed(2341);
+  modeGenerator->SetSeed(2341);
   TRandom3 *energyGenerator = new TRandom3();
   energyGenerator->SetSeed(3412);
 
